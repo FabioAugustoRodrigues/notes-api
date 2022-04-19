@@ -20,12 +20,31 @@ final class UserReaderRepository
         $statement = $this->connection->prepare($sql);
         $statement->execute();
 
-        $row = $statement->fetchAll();
+        $result = $statement->fetchAll();
 
-        if (!$row) {
+        if (!$result) {
             throw new DomainException(sprintf('Users not found'));
         }
 
-        return $row;
+        return $result;
+    }
+
+    public function readById($id): array
+    {
+        $row = [
+            'id' => $id
+        ];
+
+        $sql = "SELECT * FROM user WHERE id = :id";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute($row);
+
+        $result = $statement->fetch();
+
+        if (!$result) {
+            throw new DomainException(sprintf('User not found'));
+        }
+
+        return $result;
     }
 }

@@ -22,11 +22,7 @@ final class UserCreatorRepository
             'status' => $user['status']
         ];
 
-        $sql = "INSERT INTO user SET 
-                name=:name, 
-                email=:email, 
-                password=:password, 
-                status=:status;";
+        $sql = "INSERT INTO user SET name = :name, email = :email, password = :password, status = :status;";
 
         $this->connection->prepare($sql)->execute($row);
 
