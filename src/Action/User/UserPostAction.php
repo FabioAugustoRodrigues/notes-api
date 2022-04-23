@@ -22,7 +22,7 @@ class UserPostAction extends UserAction
         $userId = $this->userCreator->createUser($data);
 
         $result = [
-            'user_id' => $userId
+            'id_user' => $userId
         ];
 
         return $this->respondWithData($result, 201);

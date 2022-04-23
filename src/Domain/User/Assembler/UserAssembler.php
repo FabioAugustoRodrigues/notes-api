@@ -10,6 +10,7 @@ final class UserAssembler
     public function userToArray(User $user): array
     {
         return [
+            "id" => $user->getId(),
             "name" => $user->getName(),
             "email" => $user->getEmail(),
             "status" => $user->getStatus()
