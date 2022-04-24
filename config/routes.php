@@ -8,6 +8,7 @@ return function (App $app) {
     $app->get('/users/{id}', \App\Action\User\UserGetByIdAction::class);
     $app->patch('/users/{id}', \App\Action\User\UserPatchNameAndEmailAction::class);
     $app->delete('/users/{id}', \App\Action\User\UserDeleteAction::class);
+    $app->post('/login', \App\Action\User\UserLoginAction::class);
 
     $app->post('/notes', \App\Action\Note\NotePostAction::class);
     $app->get('/notes/{id}', \App\Action\Note\NoteGetByIdAction::class);

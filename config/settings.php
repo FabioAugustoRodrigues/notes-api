@@ -57,7 +57,7 @@ $settings = [
     ],
     
     'jwt' => [
-        'secrect' => 'supersecretkeyyoushouldnotcommittogithub'
+        'secret' => 'supersecretkeyyoushouldnotcommittogithub'
     ]
 ];
 

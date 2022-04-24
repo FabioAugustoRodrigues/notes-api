@@ -47,4 +47,23 @@ final class UserReaderRepository
 
         return $result;
     }
+
+    public function readByEmail(string $email): array
+    {
+        $row = [
+            'email' => $email
+        ];
+
+        $sql = "SELECT * FROM user WHERE email = :email";
+        $statement = $this->connection->prepare($sql);
+        $statement->execute($row);
+
+        $result = $statement->fetch();
+
+        if (!$result) {
+            throw new DomainException(sprintf('User not found'));
+        }
+
+        return $result;
+    }
 }

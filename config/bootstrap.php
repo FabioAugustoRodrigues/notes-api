@@ -32,10 +32,9 @@ $errorMiddleware = $app->addErrorMiddleware($displayErrorDetails, false, false);
 $errorMiddleware->setDefaultErrorHandler($errorHandler);
 
 // Add new signature
-/*
 $app->add(new Tuupola\Middleware\JwtAuthentication([
-    "path" => ["/usuarios"],
-    "secret" => "supersecretkeyyoushouldnotcommittogithub",
+    "path" => ["/users", "/notes"],
+    "secret" => $container->get('settings')['jwt']['secret'],
     "algorithm" => ["HS256"],
     "error" => function ($response, $arguments) {
         $data["status"] = "error";
@@ -44,7 +43,7 @@ $app->add(new Tuupola\Middleware\JwtAuthentication([
             ->withHeader("Content-Type", "application/json")
             ->getBody()->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT));
     }
-]));*/
+]));
 
 // Register routes
 (require __DIR__ . '/routes.php')($app);

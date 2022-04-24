@@ -25,4 +25,10 @@ final class UserReader
         $userArray = $this->repository->readById($id);
         return new User($userArray["id"], $userArray["name"], $userArray["email"], $userArray["password"], $userArray["status"]);
     }
+
+    public function readByEmail(string $email): User
+    {
+        $userArray = $this->repository->readByEmail($email);
+        return new User($userArray["id"], $userArray["name"], $userArray["email"], $userArray["password"], $userArray["status"]);
+    }
 }
